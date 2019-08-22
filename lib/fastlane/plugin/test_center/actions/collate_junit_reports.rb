@@ -110,10 +110,10 @@ module Fastlane
       end
 
       def self.increment_testable_tries(target_testable, other_testable)
-        try_count = target_testable.attributes['retries'] || 1
-        other_try_count = other_testable['retries'] || 1
+        try_count = target_testable.attributes['retries'].to_i || 1
+        other_try_count = other_testable['retries'].to_i || 1
 
-        target_testable.attributes['retries'] = (try_count.to_i + other_try_count.to_i).to_s
+        target_testable.attributes['retries'] = (try_count + other_try_count).to_s
       end
 
       def self.increment_testcase_tries(target_testcase, testcase)
